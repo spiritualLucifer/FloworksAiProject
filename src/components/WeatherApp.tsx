@@ -116,10 +116,14 @@ const WeatherApp: React.FC = () => {
           </div>
         </div>
 
-        {error && <p className="text-red-500 mt-4">Error: {error}</p>}
-
+        {/* {error && <p className="text-red-800 text-xl mt-4">Error: {error}</p>} */}
         <div className="w-[40%]">
-          {weather ? <WeatherCard weather={weather} /> : <NoWeatherReport />}
+          {!error?(weather ? <WeatherCard weather={weather} /> : <NoWeatherReport />):
+          <div className="flex flex-col justify-center items-center">
+            <img src="./no_report_cloud1.png" alt="" className="w-96"/>
+            <p className="text-blue-950 font-bold text-3xl mt-4">{error}</p>
+          </div>
+          }
         </div>
       </div>
     </>

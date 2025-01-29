@@ -1,32 +1,23 @@
+// Function to fetch weather data from the API based on city, latitude, and longitude
 const getWeatherUpdates = async (
   city: string,
   latitude: string,
   longitude: string
 ) => {
   try {
-    // Simulate a delay for a realistic user experience
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    // Return dummy weather data
-    return {
-      error: false,
-      message: "Weather successfully fetched",
-      data: {
-        city: city || "Dummy City",
-        description: "Partly cloudy",
-        humidity: 60,
-        temperature: 25,
-        maxTemperature: 30,
-        minTemperature: 20,
-        windSpeed: 10,
-      },
-    };
+    // Make a request to the weather API with the provided city, latitude, and longitude
+    const response = await fetch(`/api/weather?city=${city}&lat=${latitude}&lon=${longitude}`);
+    
+    // Check if the response is not ok (e.g., city not found)
+    if (!response.ok) {
+      throw new Error("City not found");
+    }
+    
+    // Return the response data as JSON
+    return response.json();
   } catch (error) {
-    // Simulate an error response
-    return Promise.reject({
-      error: true,
-      message: "Failed to fetch weather data",
-    });
+    // If an error occurs, reject the promise with the error
+    return Promise.reject(error);
   }
 };
 

@@ -1,6 +1,6 @@
 # Flowork AI - Weather App Assignment
 
-> - **Deployed Weather App:** [Live Demo](https://weather-app-nextjs-mauve.vercel.app/)
+> - **Deployed Weather App:** [Live Demo](https://floworks-ai-project.vercel.app/)
 
 ## Installation & Running the Application
 
